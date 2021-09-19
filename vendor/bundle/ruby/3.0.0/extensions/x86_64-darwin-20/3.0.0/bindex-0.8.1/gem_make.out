@@ -1,0 +1,15 @@
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/rstar/.rbenv/versions/3.0.2/bin/ruby -I /Users/rstar/.rbenv/versions/3.0.2/lib/ruby/site_ruby/3.0.0 -r ./siteconf20210919-40585-nj1v7n.rb extconf.rb
+creating Makefile
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210919-40585-l05wz2/skiptrace/internal
