@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: more_beauty_production
-  username: more_beauty
-  password: <%= ENV['MORE_BEAUTY_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
