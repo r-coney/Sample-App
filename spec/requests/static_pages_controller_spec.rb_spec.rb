@@ -7,7 +7,7 @@ RSpec.describe "Access to static_pages", type: :request do
   context 'GET home' do
     it 'should get home' do
       visit '/'
-      expect(page).to have_title "Home | #{@base_title}"
+      expect(page).to have_title "#{@base_title}"
     end
   end
 
