@@ -1,0 +1,15 @@
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+/Users/rstar/.rbenv/versions/3.0.2/bin/ruby -I /Users/rstar/.rbenv/versions/3.0.2/lib/ruby/site_ruby/3.0.0 -r ./siteconf20210923-2555-jdgmxl.rb extconf.rb
+creating Makefile
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/rstar/more_beauty/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.9.1/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210923-2555-6q4wd1/bootsnap

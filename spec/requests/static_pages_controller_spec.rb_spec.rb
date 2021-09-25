@@ -6,29 +6,37 @@ RSpec.describe "Access to static_pages", type: :request do
   end
   context 'GET home' do
     it 'should get home' do
-      visit '/'
+      visit root_path
       expect(page).to have_title "#{@base_title}"
     end
   end
 
   context 'GET help' do
     it 'should get help' do
-      visit '/static_pages/help'
+      visit help_path
       expect(page).to have_title "Help | #{@base_title}"
     end
   end
 
   context 'GET about' do
     it 'should get about' do
-      visit '/static_pages/about' 
+      visit about_path 
       expect(page).to have_title "About | #{@base_title}"
     end
   end
 
-  context 'GET about' do
+  context 'GET contact' do
     it 'should get contact' do
-      visit '/static_pages/contact'
+      visit contact_path
       expect(page).to have_title "Contact | #{@base_title}"
     end
   end
+
+  context 'GET privacy_policy' do
+    it 'should get privacy_policy' do
+      visit privacy_policy_path
+      expect(page).to have_title "privacy_policy | #{@base_title}"
+    end
+  end
 end
+
