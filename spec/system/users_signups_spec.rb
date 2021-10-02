@@ -17,7 +17,7 @@ RSpec.describe "UsersSignups", type: :system do
 
   scenario 'valid signup information' do
     visit signup_path
-    fill_in 'Name', with: ' User'
+    fill_in 'Name', with: 'User'
     fill_in 'Email', with: 'user@invalid.org'
     fill_in 'Password', with: 'foobar'
     fill_in 'Confirmation', with: 'foobar'
@@ -25,7 +25,4 @@ RSpec.describe "UsersSignups", type: :system do
      redirect_to @user
      expect(page).to have_content 'Welcome to the More Beauty!'
   end
-
-
-
 end
