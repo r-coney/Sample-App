@@ -39,6 +39,7 @@ RSpec.describe "UsersLogins", type: :system do
     expect(page).to have_link 'Log out', href: logout_path
   end
 
+
   scenario 'log out after log in' do
     visit login_path
     fill_in 'Email', with: 'michael@example.com'
@@ -53,5 +54,17 @@ RSpec.describe "UsersLogins", type: :system do
     expect(page).not_to have_link nil, href: user_path(@user)
   end
 
+  scenario 'login with remembering' do
+    log_in_as(@user, remember_me: '1')
+    expect(cookies[:remember_token]).not_to eq nil
+  end
 
+  scenario 'login without remembering' do
+    # cookiesを保存してログイン
+    log_in_as(@user, remember_me: '1')
+    delete logout_path
+    # cookiesを削除してログイン
+    log_in_as(@user, remember_me: '0')
+    expect(cookies[:remember_token].empty?).to be_truthy 
+  end 
 end

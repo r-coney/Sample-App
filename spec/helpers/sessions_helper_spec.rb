@@ -11,5 +11,20 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SessionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'persistent session test' do
+    before(:each) do
+      @user = create(:user)
+      remember(@user)
+    end
+    
+    it 'current_user returns right user when session is nil' do
+      expect(@user).to eq current_user
+      expect(is_logged_in?).to be_truthy
+    end
+
+    it 'current_user returns nil when remember digest is wrong' do
+      @user.update_attribute(:remember_digest, User.digest(User.new_token))
+      expect(current_user.nil?).to be_truthy
+    end
+  end
 end
