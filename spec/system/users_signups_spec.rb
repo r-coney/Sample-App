@@ -6,7 +6,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Name', with: ' '
     fill_in 'Email', with: 'user@invalid'
     fill_in 'Password', with: 'foo'
-    fill_in 'Confirmation', with: 'bar'
+    fill_in 'Password confirmation', with: 'bar'
     click_on 'Create my account'
     aggregate_failures do
       expect(current_path).to eq users_path
@@ -20,7 +20,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'Name', with: 'User'
     fill_in 'Email', with: 'user@invalid.org'
     fill_in 'Password', with: 'foobar'
-    fill_in 'Confirmation', with: 'foobar'
+    fill_in 'Password confirmation', with: 'foobar'
     click_on 'Create my account'
      redirect_to @user
      expect(page).to have_content 'Welcome to the More Beauty!'
