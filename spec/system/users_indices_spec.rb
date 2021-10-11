@@ -22,7 +22,4 @@ include_context "setup"
       expect(page).to have_css("li", text: user.name)
     end
   end
-
-
-  
 end

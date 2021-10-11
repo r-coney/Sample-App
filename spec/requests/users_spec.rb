@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
+  let(:user) { FactoryBot.attributes_for(:user) }
  describe 'GET #new' do
   before do
     @user = create(:user, :michael)
     @other_user = create(:user, :archer)
+    ActionMailer::Base.deliveries.clear
   end
   
     it "returns http success" do
@@ -73,7 +75,20 @@ RSpec.describe "Users", type: :request do
       log_in_as(@user)
       visit users_path
       expect{ delete user_path(@other_user) }.to change { User.count }.by -1
-      expect(response).to redirect_to users_url
+      
     end
+
+    it "adds new user with correct signup information and sends an activation email" do
+      aggregate_failures do
+        expect do
+          post users_path, params: { user: user }
+        end.to change(User, :count).by(1)
+        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to root_url
+        expect(is_logged_in?).to be_falsy
+      end
+    end
+
+    
   end
 end
