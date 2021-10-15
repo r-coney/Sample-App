@@ -7,6 +7,7 @@ FactoryBot.define do
     activated             { true }
     activated_at          { Time.zone.now }
     
+    
     factory :other_user do
       name                  { Faker::Name.name }
       email                 { Faker::Internet.email }
