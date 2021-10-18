@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'User.new' do
+    let(:michael) { create(:user, :michael) }
+    let(:archer) { create(:user, :archer) }
 
     before(:each) do
       @user = create(:user)
@@ -70,6 +72,15 @@ RSpec.describe User, type: :model do
       @user.save
       @user.microposts.create!(content: "Lorem ipsum")
       expect{ @user.destroy }.to change{ Micropost.count } .by -1
+    end
+
+    it 'should follow and unfollow a user' do
+      expect(michael.following?(archer)).not_to be_truthy
+      michael.follow(archer)
+      expect(michael.following?(archer)).to be_truthy
+      expect(archer.followers.include?(michael)).to be_truthy
+      michael.unfollow(archer)
+      expect(michael.following?(archer)).not_to be_truthy
     end
   end
 end
