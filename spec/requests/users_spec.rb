@@ -89,6 +89,14 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    
+    it 'should redirect following when not logged in' do
+      get following_user_path(@user)
+      expect(response).to redirect_to login_url
+    end
+
+    it 'shoule redirct followers when not logged in' do
+      get followers_user_path(@user)
+      expect(response).to redirect_to login_url
+    end
   end
 end
