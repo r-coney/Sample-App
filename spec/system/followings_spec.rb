@@ -28,5 +28,30 @@ RSpec.describe "Followings", type: :system do
       expect(page).to have_link u.name, href: user_path(u)
     end
   end
+    it 'When user clicks on Unfollow, the number of following increases by -1' do
+      visit login_path
+      fill_in 'Email',    with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+      visit user_path(other_users.first.id)
+      expect do
+        click_on "Unfollow"
+        expect(page).not_to have_link "Unfollow"
+        visit current_path
+      end.to change(user.following, :count).by(-1)
+    end
+
+    it 'When user clicks on Follow, the number of following increases by 1' do
+      visit login_path
+      fill_in 'Email',    with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+      visit user_path(other_users.last.id)
+      expect do
+        click_on "Follow"
+        expect(page).not_to have_link "Follow"
+        visit current_path
+      end.to change(user.following, :count).by(1)
+    end
 end
 
