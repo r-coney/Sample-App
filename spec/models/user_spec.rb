@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  
   context 'User.new' do
     let(:michael) { create(:user, :michael) }
     let(:archer) { create(:user, :archer) }
@@ -82,5 +83,34 @@ RSpec.describe User, type: :model do
       michael.unfollow(archer)
       expect(michael.following?(archer)).not_to be_truthy
     end
+  end
+
+  describe "def feed" do
+    let(:user) { create(:user, :with_microposts) }
+    let(:other_user) { create(:user, :with_microposts) }
+
+    context "when user is following other_user" do
+      before { user.active_relationships.create!(followed_id: other_user.id) }
+
+      it "contains other user's microposts within the user's Micropost" do
+        other_user.microposts.each do |post_following|
+          expect(user.feed.include?(post_following)).to be_truthy
+        end
+      end
+
+      it "contains the user's own microposts in the user's Micropost" do
+        user.microposts.each do |post_self|
+          expect(user.feed.include?(post_self)).to be_truthy
+        end
+      end
+    end
+
+      context "when user is not following other_user" do
+        it "doesn't contain other user's microposts within the user's Micropost" do
+          other_user.microposts.each do |post_unfollowed|
+            expect(user.feed.include?(post_unfollowed)).to be_falsy
+          end
+        end
+      end
   end
 end
