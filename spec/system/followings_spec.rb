@@ -53,5 +53,18 @@ RSpec.describe "Followings", type: :system do
         visit current_path
       end.to change(user.following, :count).by(1)
     end
+
+    it 'feed on Home page' do
+      visit login_path
+      fill_in 'Email',    with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+      click_on 'Home'
+      user.feed.paginate(page: 1).each do |micropost|
+        expect(page).to include CGI.escapeHTML(micropost.content), response.body
+      end
+    end
+
+      
 end
 
