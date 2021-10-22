@@ -4,7 +4,6 @@ RSpec.describe Micropost, type: :model do
   let(:micropost) { create(:micropost) }
 
   describe 'micropost validation' do
-    
     it 'micropostが有効' do
     expect(micropost.valid?).to be_truthy
     end
@@ -26,7 +25,6 @@ RSpec.describe Micropost, type: :model do
   end
   
   describe "Sort by latest" do
-      # let!(:micropost) { create(:micropost) }
       let!(:day_before_yesterday) { create(:micropost, :day_before_yesterday) }
       let!(:now) { create(:micropost, :now) }
       let!(:yesterday) { create(:micropost, :yesterday) }
