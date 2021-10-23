@@ -6,14 +6,15 @@ FactoryBot.define do
     password_confirmation { "foobar" }
     activated             { true }
     activated_at          { Time.zone.now }
-    
-    
-    factory :other_user do
-      name                  { Faker::Name.name }
-      sequence(:email)      { |n| "test#{n}@example.com" }
-      activated             { true }
-      activated_at          { Time.zone.now }
-    end
+  end
+  
+  trait :other_user do
+    name                  { Faker::Name.name }
+    sequence(:email)      { |n| "test#{n}@example.com" }
+    password              { "password"}
+    password_confirmation { "password"}
+    activated             { true }
+    activated_at          { Time.zone.now }
   end
 
   trait :michael do
