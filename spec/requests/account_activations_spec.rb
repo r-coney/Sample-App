@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe "AccountActivations", type: :request do
   let(:user) { create(:user, :no_activated) }
 
-  # 正しいトークンと間違ったemailの場合
-  context 'when user sends right token and wrong email' do
+  context '正しいトークンと間違ったemailの場合' do
     before do
       get edit_account_activation_path(
         user.activation_token,
@@ -12,14 +11,13 @@ RSpec.describe "AccountActivations", type: :request do
       )
     end
 
-    it "falis login" do
+    it 'ログイン失敗' do
       expect(is_logged_in?).to be_falsy
       expect(response).to redirect_to root_url
     end
   end
 
-  # 間違ったトークンと正しいemailの場合
-  context 'when user sends wrong token and right email' do
+  context '間違ったトークンと正しいemailの場合' do
     before do
       get edit_account_activation_path(
         'wrong',
@@ -27,14 +25,13 @@ RSpec.describe "AccountActivations", type: :request do
       )
     end
 
-    it "falis login" do
+    it 'ログイン失敗' do
       expect(is_logged_in?).to be_falsy
       expect(response).to redirect_to root_url
     end
   end
 
-  # トークン、emailが両方正しい場合
-  context 'when user sends right token and right email' do
+  context 'トークン、emailが両方正しい場合' do
     before do
       get edit_account_activation_path(
         user.activation_token,
@@ -42,7 +39,7 @@ RSpec.describe "AccountActivations", type: :request do
       )
     end
 
-    it "succeeds login" do
+    it 'ログイン成功' do
       expect(is_logged_in?).to be_truthy
       expect(response).to redirect_to user
     end
