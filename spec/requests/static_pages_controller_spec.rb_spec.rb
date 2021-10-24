@@ -1,39 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe "Access to static_pages", type: :request do
-  before do
-    @base_title = "More Beauty"
-  end
-  context 'GET home' do
-    it 'should get home' do
+  before { @base_title = "More Beauty" }
+
+  describe '#home' do
+    it 'homeページが表示される' do
       visit root_path
       expect(page).to have_title "#{@base_title}"
     end
   end
 
-  context 'GET help' do
-    it 'should get help' do
+  describe '#help' do
+    it 'helpページが表示される' do
       visit help_path
       expect(page).to have_title "Help | #{@base_title}"
     end
   end
 
-  context 'GET about' do
-    it 'should get about' do
+  describe '#about' do
+    it 'aboutページが表示される' do
       visit about_path 
       expect(page).to have_title "About | #{@base_title}"
     end
   end
 
-  context 'GET contact' do
-    it 'should get contact' do
+  describe '#contact' do
+    it 'contactページが表示される' do
       visit contact_path
       expect(page).to have_title "Contact | #{@base_title}"
     end
   end
 
-  context 'GET privacy_policy' do
-    it 'should get privacy_policy' do
+  describe '#privacy_policy' do
+    it 'privacy_policyページが表示される' do
       visit privacy_policy_path
       expect(page).to have_title "privacy_policy | #{@base_title}"
     end
