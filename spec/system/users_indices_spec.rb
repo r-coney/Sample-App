@@ -7,7 +7,7 @@ include_context "setup"
   before do
     users
     @admin = create(:user, :michael)
-    @non_admin = create(:user, :archer)
+    @non_admin = create(:user, :no_admin)
   end
 
   it 'index including pagination' do

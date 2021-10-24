@@ -17,6 +17,25 @@ FactoryBot.define do
     activated_at          { Time.zone.now }
   end
 
+  trait :admin do
+    name                  { "admin" } 
+    email                 { "admin@example.com" }
+    password              { "password"}
+    password_confirmation { "password"}
+    admin                 { true }
+    activated             { true }
+    activated_at          { Time.zone.now }
+  end
+  
+  trait :no_admin do
+    name                  { "no_admin" } 
+    email                 { "no-admin@example.gov" }
+    password              { "password"}
+    password_confirmation { "password"}
+    activated             { true }
+    activated_at          { Time.zone.now }
+  end
+
   trait :michael do
     name                  { "Michael Example" } 
     email                 { "michael@example.com" }
@@ -28,14 +47,6 @@ FactoryBot.define do
 
   end
 
-  trait :archer do
-    name                  { "Sterling Archer" } 
-    email                 { "duchess@example.gov" }
-    password              { "password"}
-    password_confirmation { "password"}
-    activated             { true }
-    activated_at          { Time.zone.now }
-  end
 
   trait :no_activated do
     activated { false }
@@ -45,6 +56,8 @@ FactoryBot.define do
   trait :with_microposts do
     after(:create) { |user| create_list(:micropost, 5, user: user) }
   end
+
+
 end
 
 
