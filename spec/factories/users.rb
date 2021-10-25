@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :user do
     name                  { "Example User" }
     sequence(:email)      { |n| "user#{n}@example.com" }
-    password              { "foobar" }
-    password_confirmation { "foobar" }
+    password              { "password" }
+    password_confirmation { "password" }
     activated             { true }
     activated_at          { Time.zone.now }
   end
@@ -26,7 +26,7 @@ FactoryBot.define do
     activated             { true }
     activated_at          { Time.zone.now }
   end
-  
+
   trait :no_admin do
     name                  { "no_admin" } 
     email                 { "no-admin@example.gov" }
