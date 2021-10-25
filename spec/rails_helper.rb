@@ -37,7 +37,7 @@ RSpec.configure do |config|
   include ApplicationHelper
   
   config.include TestHelper
-  config.include SignUpHelper
+  config.include SigninHelper
   
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

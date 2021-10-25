@@ -12,7 +12,7 @@ RSpec.describe "Followings", type: :system do
   end
   
   describe "following page" do
-    before { sign_up(user) }
+    before { signin(user) }
 
     context 'followingをクリックした時' do
       it 'フォローしているユーザーが表示される' do
@@ -36,7 +36,7 @@ RSpec.describe "Followings", type: :system do
   end
 
   describe 'follow unfollow' do
-    before { sign_up(user) }
+    before { signin(user) }
     
     context 'フォロー解除した時' do
       it 'ユーザーがフォロー解除すると、フォローの数が一つ減る' do
@@ -63,7 +63,7 @@ RSpec.describe "Followings", type: :system do
 
   describe 'feed' do
     it 'ホームページにフィードが表示される' do
-      sign_up(user)
+      signin(user)
       click_on 'Home'
       user.feed.paginate(page: 1).each do |micropost|
         expect(page).to include CGI.escapeHTML(micropost.content), response.body

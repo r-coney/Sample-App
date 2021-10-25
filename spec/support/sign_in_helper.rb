@@ -1,5 +1,7 @@
-module SignUpHelper
-  def sign_up(user)
+require 'rails_helper'
+
+module SigninHelper
+  def signin(user)
     visit login_path
     fill_in 'Email',    with: user.email
     fill_in 'Password', with: user.password
@@ -8,5 +10,5 @@ module SignUpHelper
 end
 
 RSpec.configure do |config|
-  config.include SignUpHelper
+  config.include SigninHelper
 end
