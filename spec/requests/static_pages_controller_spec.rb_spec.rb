@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Access to static_pages", type: :request do
-  before { @base_title = "More Beauty" }
+  before { @base_title = "Sample App" }
 
   describe '#home' do
     it 'homeページが表示される' do
