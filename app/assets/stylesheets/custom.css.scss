@@ -14,7 +14,8 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 body {
-  padding-top: 60px;
+  background: linear-gradient(45deg, #2af598 0%, #009efd 100%);
+  background-size: cover;
 }
 
 section {
@@ -75,6 +76,18 @@ p {
   color: #fff;
   text-decoration: none;
 }
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* top */
+#top h1 {
+  font-size: 5rem;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
 
 /* footer */
 footer {
