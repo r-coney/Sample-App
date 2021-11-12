@@ -7,28 +7,28 @@ RSpec.describe "UsersEdits", type: :system do
     signin(user)
     expect(page).to have_current_path user_path(user)
     visit edit_user_path(user)
-    expect(page).to have_content 'Update your profile'
+    expect(page).to have_content 'プロフィールを編集'
     fill_in 'Name', with: ''
     fill_in 'Email', with: ''
     fill_in 'Password', with: ''
     fill_in 'Password confirmation', with: ''
-    click_button 'Save changes'
-    expect(page).to have_content 'Update your profile'
+    click_button '保存'
+    expect(page).to have_content 'プロフィールを編集'
   end
 
   it 'ユーザー情報の編集とfriendly forwardingに成功する' do
     visit edit_user_path(user)
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_button "Log in"
+    click_button "ログイン"
     expect(page).to have_current_path edit_user_path(user)
     visit edit_user_path(user)
-    expect(page).to have_content 'Update your profile'
+    expect(page).to have_content 'プロフィールを編集'
     fill_in 'Name', with: 'Foo Bar'
     fill_in 'Email', with: 'foo@bar.com'
     fill_in 'Password', with: 'foobar'
     fill_in 'Password confirmation', with: 'foobar'
-    click_button 'Save changes'
+    click_button '保存'
     expect(page).to have_content 'Profile updated'
     expect(page).to  have_content 'Foo Bar'
     user.reload

@@ -7,11 +7,11 @@ RSpec.describe "UsersLogins", type: :system do
     context '有効なメールアドレス、無効なパスワードの場合' do
       it 'ログインに失敗する' do
         visit login_path
-        expect(page).to have_content 'Log in'
+        expect(page).to have_content 'ログイン'
         fill_in 'Email', with: user.email
         fill_in 'Password', with: 'invalid'
-        click_button "Log in"
-        expect(page).to have_content 'Log in'
+        click_button "ログイン"
+        expect(page).to have_content 'ログイン'
         visit root_path
         expect(page).not_to have_content 'Invalid email/password combination'
       end
@@ -20,11 +20,11 @@ RSpec.describe "UsersLogins", type: :system do
     context 'メールアドレス、パスワードの両方が無効な場合' do
       it 'ログインに失敗する' do 
         visit login_path
-        expect(page).to have_content 'Log in'
+        expect(page).to have_content 'ログイン'
         fill_in 'Email', with: ''
         fill_in 'Password', with: ''
-        click_button "Log in"
-        expect(page).to have_content 'Log in'
+        click_button "ログイン"
+        expect(page).to have_content 'ログイン'
         visit root_path
         expect(page).not_to have_content 'Invalid email/password combination'
       end
@@ -35,12 +35,12 @@ RSpec.describe "UsersLogins", type: :system do
         visit login_path
         fill_in 'Email', with: user.email
         fill_in 'Password', with: user.password
-        click_button "Log in"
+        click_button "ログイン"
         expect(page).to have_current_path user_path(user)
         expect(page).not_to have_link login_path
-        click_link 'Account'
-        expect(page).to have_link 'profile', href: user_path(user)
-        expect(page).to have_link 'Log out', href: logout_path
+        click_link 'アカウント'
+        expect(page).to have_link 'プロフィール', href: user_path(user)
+        expect(page).to have_link 'ログアウト', href: logout_path
       end
     end
   end
@@ -49,11 +49,10 @@ RSpec.describe "UsersLogins", type: :system do
     subject { page }
     it 'ログアウトする' do
       signin(user)
-      click_link 'Account'
-      click_link 'Log out'
+      click_link 'アカウント'
+      click_link 'ログアウト'
       is_expected.to have_current_path root_path
-      is_expected.to have_link 'Log in', href: login_path
-      is_expected.not_to have_link 'Account'
+      is_expected.to have_link 'ログイン', href: login_path
       is_expected.not_to have_link nil, href: logout_path
       is_expected.not_to have_link nil, href: user_path(user)
     end

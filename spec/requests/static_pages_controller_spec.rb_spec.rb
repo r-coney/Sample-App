@@ -30,12 +30,5 @@ RSpec.describe "Access to static_pages", type: :request do
       expect(page).to have_title "Contact | #{@base_title}"
     end
   end
-
-  describe '#privacy_policy' do
-    it 'privacy_policyページが表示される' do
-      visit privacy_policy_path
-      expect(page).to have_title "privacy_policy | #{@base_title}"
-    end
-  end
 end
 

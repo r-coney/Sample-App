@@ -64,7 +64,7 @@ RSpec.describe "Followings", type: :system do
   describe 'feed' do
     it 'ホームページにフィードが表示される' do
       signin(user)
-      click_on 'Home'
+      click_on 'ホーム'
       user.feed.paginate(page: 1).each do |micropost|
         expect(page).to include CGI.escapeHTML(micropost.content), response.body
       end

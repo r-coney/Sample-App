@@ -9,6 +9,12 @@ class StaticPagesController < ApplicationController
   def help
   end
 
+  def help_post
+  end
+
+  def help_signup
+  end
+
   def about
   end
 

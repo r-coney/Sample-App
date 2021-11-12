@@ -15,11 +15,11 @@ RSpec.describe 'MicropostsInterfaces', type: :system do
   describe "micropost interface" do
   before do 
     signin(user)
-    click_on "Home"
+    click_on "ホーム"
   end
 
     it '無効な送信の場合、micropostは作成できない' do 
-      click_on "Post"
+      click_on "投稿"
       expect(has_css?('.alert-danger')).to be_truthy
     end
 
@@ -32,7 +32,7 @@ RSpec.describe 'MicropostsInterfaces', type: :system do
       valid_content = "This micropost really ties the room together"
       fill_in "micropost_content", with: valid_content
       expect do
-        click_on "Post"
+        click_on "投稿"
         expect(current_path).to eq root_path
         expect(has_css?('.alert-success')).to be_truthy
       end.to change(Micropost, :count).by(1)

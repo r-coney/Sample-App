@@ -10,10 +10,10 @@ RSpec.describe "UsersSignups", type: :system do
         fill_in "Email", with: "user@invalid"
         fill_in "Password", with: "foo"
         fill_in "Password confirmation", with: "bar"
-        click_on "Create my account"
+        click_on "アカウントを作成"
         aggregate_failures do
           expect(current_path).to eq users_path
-          expect(page).to have_content 'Sign up'
+          expect(page).to have_content 'アカウントを作成'
           expect(page).to have_content 'The form contains 4 errors'
         end
       end
@@ -26,7 +26,7 @@ RSpec.describe "UsersSignups", type: :system do
         fill_in "Email", with: "user@invalid.org"
         fill_in "Password", with: "foobar"
         fill_in "Password confirmation", with: "foobar"
-        click_on "Create my account"
+        click_on "アカウントを作成"
         expect(page).to have_content "Please check your email to activate your account."
       end
     end

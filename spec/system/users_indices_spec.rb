@@ -7,7 +7,7 @@ RSpec.describe 'UsersIndices', type: :system do
   it 'indexページにpaginationリンクが存在している' do
     signin(user)
     visit users_path
-    expect(page).to have_content "All users"
+    expect(page).to have_content "全てのユーザー"
     expect(page).to have_content "Previous"
     User.paginate(page: 1).each do |user|
       expect(page).to have_css("li", text: user.name)
