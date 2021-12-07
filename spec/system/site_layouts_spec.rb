@@ -24,7 +24,7 @@ RSpec.describe 'site layout', type: :system do
       signin(user)
       is_expected.to have_current_path user_path(user)
       visit root_path
-      is_expected.to have_link '全てのユーザー', href: users_path
+      is_expected.to have_link 'ユーザー一覧', href: users_path
       click_link 'アカウント'
       is_expected.to have_link 'プロフィール', href: user_path(user)
       is_expected.to have_link '設定', href: edit_user_path(user)
