@@ -9,7 +9,6 @@ RSpec.describe 'site layout', type: :system do
         is_expected.to have_link nil, href: root_path
         is_expected.to have_link 'ヘルプ', href: help_path
         is_expected.to have_link 'Sample Appについて', href: about_path
-        is_expected.to have_link 'お問い合わせ', href: contact_path
         visit contact_path
         is_expected.to have_title full_title("Contact")
         visit signup_path
