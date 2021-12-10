@@ -1,24 +1,32 @@
-# README
+# Sample-App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+「**Ruby on Rails Tutorial６」を参考に作成したWebアプリケーションです。
 
-Things you may want to cover:
+https://sample-app-2021-11.herokuapp.com/
 
-* Ruby version
 
-* System dependencies
+## 概要
 
-* Configuration
+短文や画像を投稿したり、他のユーザーをフォローして投稿を表示することができます。
 
-* Database creation
+### 変更点
 
-* Database initialization
+・ボタンの配置や背景などのUIを変更
 
-* How to run the test suite
+・テストをRspecに変更
 
-* Services (job queues, cache servers, search engines, etc.)
+・データベースをMysqlに変更
 
-* Deployment instructions
+## 使用技術
 
-* .....
+・Ruby　3.0.2
+
+・Ruby on Rails 6.1.4.1
+
+・Mysql 8.0.27
+
+・Puma
+
+・Rspec
+
+・
