@@ -1,6 +1,6 @@
 # Sample-App
 
-「**Ruby on Rails Tutorial６」を参考に作成したWebアプリケーションです。
+「**Ruby on Rails Tutorial６**」を参考に作成したWebアプリケーションです。
 
 https://sample-app-2021-11.herokuapp.com/
 
@@ -29,4 +29,4 @@ https://sample-app-2021-11.herokuapp.com/
 
 ・Rspec
 
-・
+
